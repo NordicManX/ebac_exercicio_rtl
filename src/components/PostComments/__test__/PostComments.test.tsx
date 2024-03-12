@@ -1,5 +1,4 @@
 import { fireEvent, render, screen } from '@testing-library/react'
-import Post from '..'
 import PostComment from '..'
 
 describe('Teste para o componente PostComment', () => {
@@ -8,7 +7,7 @@ describe('Teste para o componente PostComment', () => {
         expect(screen.getByText('Comentar')).toBeInTheDocument()
     })
 
-    test('Deve adicionar cometários, totalizando dois comentários', () => {
+    test('Deve adicionar comentários, totalizando dois(2) comentários', () => {
         render(<PostComment />)
 
         fireEvent.change(screen.getByTestId('comment-area'), {
@@ -25,6 +24,6 @@ describe('Teste para o componente PostComment', () => {
         })
 
         fireEvent.click(screen.getByTestId('btn-comment'))
-        expect(screen.getByTestId('comment-1')).toHaveLength(2)
+        expect(screen.getAllByTestId('comment-1')).toHaveLength(2)
     })
 })
